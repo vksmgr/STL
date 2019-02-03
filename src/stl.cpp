@@ -6,6 +6,9 @@
 #include <algorithm>
 #include "stl.h"
 #include <deque>
+#include <set>
+#include <map>
+#include <stack>
 
 
 using namespace std;
@@ -72,11 +75,74 @@ void deQHello(){
     }
 }
 
+
+/* Associative containers*/
+void sets(){
+    set<int> set1;
+    set1.insert(10);
+    set1.insert(2);
+    set1.insert(20);
+
+    set<int>::iterator it;
+    pair<set<int>::iterator, bool> ret;
+    ret = set1.insert(2);
+
+    if (ret.second == false)
+        it = ret.first;
+    set1.insert(it, 99);
+    cout << *set1.find(2);
+
+    set1.erase(99);
+    set1.erase(it);
+
+    /* Multiset */
+    multiset<int> mulSet;
+    mulSet.insert(10);
+    mulSet.insert(10);
+    mulSet.insert(20);
+}
+
+/* Map and multimaps
+ * They do not allow to modify the keys
+ * */
+
+void maps(){
+    map<int, char> mymap;
+    mymap.insert(pair<int, char> (1, 'a'));
+    mymap.insert(make_pair(2, 'b'));
+    mymap.insert(make_pair(12, 'b'));
+    mymap.insert(make_pair(22, 'b'));
+
+    //    iterating over the map
+    map<int, char>::iterator itr1 = mymap.begin();
+    map<int, char>::iterator itr2 = mymap.end();
+
+    for (map<int, char>::iterator itr = itr1; itr != itr2; ++itr)
+        cout << (*itr).first << " => " << (*itr).second <<endl;
+
+}
+
+void basicDS(){
+    stack<int> st;
+    st.push(10);
+    st.push(10);
+    st.push(100);
+
+    auto ele = st.top();
+    cout << "the element of the top in the stack : "<< ele;
+}
+
+
+
 void runMe() {
 //    cout << square(10) <<endl;
 //    cout << square(10.1) << endl;
 //    vecHello();
-    deQHello();
+//    deQHello();
+//    sets();
+//     maps();
+    basicDS();
 }
+
 
 
