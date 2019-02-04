@@ -9,7 +9,8 @@
 #include <set>
 #include <map>
 #include <stack>
-
+#include <unordered_set>
+#include <unordered_map>
 
 using namespace std;
 
@@ -52,14 +53,14 @@ void vecHello() {
 
 
 /* Hello Deque*/
-void deQHello(){
+void deQHello() {
     deque<int> dq = {4, 5, 6};
     deque<int>::iterator iterator1 = dq.begin();
     deque<int>::iterator iterator2 = dq.end();
 
     /*Printing the elements in the iterator*/
-    for(deque<int>::iterator itr = iterator1; itr < iterator2; ++itr ){
-        cout << " " <<*itr ;
+    for (deque<int>::iterator itr = iterator1; itr < iterator2; ++itr) {
+        cout << " " << *itr;
     }
     cout << endl;
     // pusing some elements to the iterator
@@ -70,14 +71,14 @@ void deQHello(){
     /*Printing the elements in the iterator*/
     deque<int>::iterator iterator11 = dq.begin();
     deque<int>::iterator iterator22 = dq.end();
-    for(deque<int>::iterator itr = iterator11; itr < iterator22; ++itr ){
-        cout << " " <<*itr ;
+    for (deque<int>::iterator itr = iterator11; itr < iterator22; ++itr) {
+        cout << " " << *itr;
     }
 }
 
 
 /* Associative containers*/
-void sets(){
+void sets() {
     set<int> set1;
     set1.insert(10);
     set1.insert(2);
@@ -106,9 +107,9 @@ void sets(){
  * They do not allow to modify the keys
  * */
 
-void maps(){
+void maps() {
     map<int, char> mymap;
-    mymap.insert(pair<int, char> (1, 'a'));
+    mymap.insert(pair<int, char>(1, 'a'));
     mymap.insert(make_pair(2, 'b'));
     mymap.insert(make_pair(12, 'b'));
     mymap.insert(make_pair(22, 'b'));
@@ -118,20 +119,49 @@ void maps(){
     map<int, char>::iterator itr2 = mymap.end();
 
     for (map<int, char>::iterator itr = itr1; itr != itr2; ++itr)
-        cout << (*itr).first << " => " << (*itr).second <<endl;
+        cout << (*itr).first << " => " << (*itr).second << endl;
 
 }
 
-void basicDS(){
+/* Unorderd sets and maps*/
+void unorderSetMap() {
+    unordered_set<int> myset;
+
+    myset.insert(10);
+    myset.insert(20);
+    myset.insert(10);
+
+    unordered_set<int>::iterator itr1 = myset.begin();
+    unordered_set<int>::iterator itr2 = myset.end();
+    for (unordered_set<int>::iterator itr = itr1; itr != itr2; ++itr)
+        if (itr != myset.end())
+            cout << *itr << endl;
+    cout << "Finished";
+}
+
+void basicDS() {
     stack<int> st;
     st.push(10);
     st.push(10);
     st.push(100);
 
     auto ele = st.top();
-    cout << "the element of the top in the stack : "<< ele;
+    cout << "the element of the top in the stack : " << ele;
 }
 
+/* Associative array*/
+void associativeArray(){
+    unordered_map <char, string> day = {{'S', "sunday"}, {'M', "Monday"}};
+    cout <<day['S'] << endl;
+    cout << day.at('M') << endl;
+    day['M'] = "MONDAY";
+    cout <<day['M'] << endl;
+    day.at('M') = "Monday";
+    cout <<day['M'] << endl;
+    day.insert(make_pair('M', "MOOnday"));
+    cout <<day['W'] << endl;
+
+}
 
 
 void runMe() {
@@ -141,7 +171,9 @@ void runMe() {
 //    deQHello();
 //    sets();
 //     maps();
-    basicDS();
+//    basicDS();
+//    unorderSetMap();
+    associativeArray();
 }
 
 

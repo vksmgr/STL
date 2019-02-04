@@ -3,4 +3,4 @@ project(STL)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(STL src/main.cpp src/stl.cpp src/stl.h)
+add_executable(STL src/main.cpp src/stl.cpp src/stl.h src/iterators.cpp src/iterators.h src/algorithms.cpp src/algorithms.h)
